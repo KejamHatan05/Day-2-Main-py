@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verify Your Account</title>
+  <link rel="stylesheet" href="color.css" />
+</head>
+<body>
+
+  <main class="card" aria-labelledby="otp-heading">
+
+    <div class="icon-wrap" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#ff6b47" stroke-width="2"
+          stroke-linecap="round" stroke-linejoin="round">
+        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+    </div>
+
+    
+    <h1 id="otp-heading">Verify your account</h1>
+
+    <p class="subtitle">
+      Enter the 6-digit code we sent to<br>
+      <strong>+62 *** **** 1234</strong>
+    </p>
+
+    <div class="otp-grid" role="group" aria-label="Enter verification code">
+      <input class="otp-box" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit 1" autocomplete="one-time-code" />      
+      <input class="otp-box" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit 2" />    
+      <input class="otp-box" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit 3" />
+      <input class="otp-box" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit 4" />
+      <input class="otp-box" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit 5" />
+      <input class="otp-box" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="1" aria-label="Digit 6" />
+    </div>
+
+    <div class="controls">
+      <button type="button" id="verifyBtn" class="primary">Verify</button>
+      <button type="button" id="resendBtn" class="ghost" disabled>Resend code</button>
+    </div>
+
+    <div class="message" id="message" aria-live="polite">
+      You can request a new code in <span id="timer">30</span>s.
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

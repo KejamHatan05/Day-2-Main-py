@@ -1,0 +1,237 @@
+/* 1. Design Tokens */
+:root {
+  --bg:             #fff9f7;
+  --card-bg:        #ffffff;
+  --accent:         #ff6b47;                    
+  --accent-shadow:  rgba(255, 107, 71, 0.22);   
+  --muted:          #6b7280;                    
+  --success:        #16a34a;                    
+  --success-shadow: rgba(16, 163, 74, 0.15);
+  --danger:         #ef4444;                    
+  --danger-shadow:  rgba(239, 68, 68, 0.12);
+  --border:         #e5e7eb;                    
+  --text:           #111827;                    
+}
+
+
+/* 2. Reset & Base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;       
+  justify-content: center;   
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: linear-gradient(160deg, #fff5f0 0%, #fff9f7 55%, #f0f9ff 100%);
+}
+
+
+/* 3. Card */
+.card {
+  width: min(480px, 92vw);   
+  background: var(--card-bg);
+  padding: 36px 32px 28px;
+  border-radius: 18px;
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.04),
+    0 12px 40px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+
+/* 4. Icon Shield  */
+.icon-wrap {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, #fff1ed, #ffe4dc);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 18px;
+}
+
+.icon-wrap svg {
+  width: 26px;
+  height: 26px;
+}
+
+
+/* 5. Typography  */
+h1 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}
+
+
+/* 6. OTP Grid */
+.otp-grid {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 24px 0 8px;
+}
+
+
+/* 7. OTP Box (State: Default) */
+.otp-box {
+  width: 52px;
+  height: 62px;
+  border-radius: 12px;
+  border: 2px solid var(--border);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--text);
+  text-align: center;
+  background: #fafafa;
+  caret-color: var(--accent);   
+  transition: all 0.18s ease;   
+  outline: none;
+  -moz-appearance: textfield;
+}
+
+.otp-box::-webkit-outer-spin-button,
+.otp-box::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+/* 8. OTP Box (State: Focused)  */
+.otp-box:focus {
+  border-color: var(--accent);
+  background: #ffffff;
+  box-shadow: 0 6px 20px var(--accent-shadow);
+  transform: translateY(-3px);
+}
+
+
+/* 9. OTP Box (State: Filled) */
+.otp-box.filled {
+  border-color: var(--accent);
+  background: #fff8f6;
+}
+
+
+/* 10. OTP Box (State: Error) */
+.otp-box.error {
+  border-color: var(--danger);
+  box-shadow: 0 4px 16px var(--danger-shadow);
+  animation: shake 0.35s ease;   /* getar horizontal saat kode salah */
+}
+
+
+/* 11. OTP Box (State: Success) */
+.otp-box.success {
+  border-color: var(--success);
+  box-shadow: 0 4px 16px var(--success-shadow);
+}
+
+
+/* 12. Animasi Shake  */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25%       { transform: translateX(-5px); }
+  75%       { transform: translateX(5px); }
+}
+
+
+/* 13. Controls (tombol-tombol) */
+.controls {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 18px;
+  flex-wrap: wrap; 
+}
+
+
+/* 14. Tombol Primary (Verify) */
+button.primary {                 
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 11px 28px;
+  font-size: 0.95rem;
+  font-weight: 600;              
+  cursor: pointer;
+  transition: background 0.18s ease, transform 0.12s ease, box-shadow 0.18s ease;
+  box-shadow: 0 4px 14px var(--accent-shadow);
+}
+
+button.primary:hover {
+  background: #f55c38;
+  box-shadow: 0 6px 20px var(--accent-shadow);
+}
+
+button.primary:active {
+  transform: scale(0.97);   /* efek "ditekan" */
+}
+
+button.primary:disabled {
+  background: #f1a898;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+
+/* 15. Tombol Ghost (Resend) */
+button.ghost {
+  background: transparent;
+  border: none;
+  color: var(--accent);
+  font-size: 0.92rem;
+  font-weight: 500;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+button.ghost:hover    { color: #d94e2e; }
+
+button.ghost:disabled {
+  color: var(--muted);
+  cursor: not-allowed;
+  text-decoration: none;
+}
+
+
+/* 16. Pesan Status / Timer */
+.message {
+  margin-top: 16px;
+  min-height: 22px;
+  color: var(--muted);
+  font-size: 0.88rem;
+  transition: color 0.2s ease;
+}
+
+.message.success-msg {
+  color: var(--success);
+  font-weight: 600;
+}
+
+.message.error-msg {
+  color: var(--danger);
+  font-weight: 500;
+}
+
+
+/* 17. Responsive (layar kecil < 420px) */
+@media (max-width: 420px) {
+  .card    { padding: 28px 18px 22px; }
+  .otp-box { width: 42px; height: 52px; font-size: 1.3rem; }
+}
